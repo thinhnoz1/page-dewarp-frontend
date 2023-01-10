@@ -45,14 +45,25 @@ function Login() {
       auth.setToken(loginData.Authorization);
       auth.setUser(loginData.user);
     } catch (e) {
-      console.log(e.response);
+      console.log(e.response.data.message);
+      // console.log(e.response);
       if (e.response.status === 401) {
-        console.log(e.response);
-        // Object.keys(e.response.data).forEach((key) => {
-        //   setError(key, {
+        setError("email", {
+          type: "manual",
+          message: e.response.data.message,
+        });
+        console.log("errors", errors);
+        // Object.keys(e.response.data.message).forEach((key) => {
+        //   console.log("this is key", key);
+        //   setError("message", {
         //     type: "manual",
         //     message: e.response.data.message,
         //   });
+        //   console.log("this is message", e.response.data.message);
+        // });
+        // setError(1, {
+        //   type: "manual",
+        //   message: e.response.data.message,
         // });
       }
     } finally {
