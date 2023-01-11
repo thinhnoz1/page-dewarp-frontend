@@ -9,17 +9,83 @@
 }
 
 .blue {
-  background-color: blue;
-  transition-property: background-color, width;
-  transition-duration: 2000ms;
-  transition-timing-function: cubic-bezier() ease-in-out;
+  /* background-color: blue; move to from */
+  /* transition-property: background-color, width, color, border;
+  transition-duration: 2000ms, 4s; */
+  /* transition-duration: 2000ms; */
+  /* transition-timing-function: cubic-bezier() ease-in-out; */
+  /* transition: backgound-color 2s ease-in-out, width 4s ease-in; */
+  /* transition: all 2s ease-in-out; */
+  position: relative;
+  animation-name: loadingABC, move, scale;
+  animation-duration: 2s;
+  /* animation-iteration-count: 3; */
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  /* animation-delay: 2s; */
+  animation-timing-function: ease-in-out;
 }
 
-.blue:hover {
+@keyframes loadingABC {
+  0% {
+    background-color: blue;
+  }
+  50% {
+    background-color: yellow;
+    width: 200px;
+    height: 200px;
+  }
+  /* 75% {
+  } */
+  100% {
+    background-color: brown;
+    width: 150px;
+    height: 150px;
+  }
+  /* from {
+    background-color: blue;
+  }
+  to {
+    background-color: brown;
+    width: 150px;
+    height: 150px;
+  } */
+}
+
+@keyframes move {
+  from {
+    left: 0;
+  }
+  to {
+    left: 20px;
+  }
+}
+
+/* .blue:hover {
   width: 250px;
   background-color: brown;
 }
 
 .yellow {
   background-color: yellow;
+} */
+
+.menu li {
+  display: inline-block;
+  position: relative;
+}
+
+.menu li::after {
+  width: 100%;
+  height: 4px;
+  background-color: black;
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  transition: width 1.5s;
+}
+
+.menu li:hover::after {
+  display: inline-block;
 }
