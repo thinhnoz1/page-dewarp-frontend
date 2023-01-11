@@ -1,3 +1,5 @@
+/* two way to make animation with css keyframes or transition */
+
 * {
   padding: 0;
   margin: 0;
@@ -17,13 +19,14 @@
   /* transition: backgound-color 2s ease-in-out, width 4s ease-in; */
   /* transition: all 2s ease-in-out; */
   position: relative;
-  animation-name: loadingABC, move, scale;
-  animation-duration: 2s;
+  /* animation-name: loadingABC, move, scale;
+  animation-duration: 2s; */
   /* animation-iteration-count: 3; */
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  /* animation-iteration-count: infinite;
+  animation-direction: alternate; */
   /* animation-delay: 2s; */
-  animation-timing-function: ease-in-out;
+  /* animation-timing-function: ease-in-out; */
+  animation: loadingABC 2s infinite alternate, move 4s infinite alternate;
 }
 
 @keyframes loadingABC {
@@ -88,4 +91,22 @@
 
 .menu li:hover::after {
   display: inline-block;
+}
+
+.loading {
+  width: 50px;
+  height: 50px;
+  border: 5px solid black;
+  border-top-color: red;
+  border-right-color: burlywood;
+  border-bottom-color: chartreuse;
+  border-radius: 50%;
+
+  animation: circle-loading 1s infinite linear;
+}
+
+@keyframes circle-loading {
+  to {
+    transform: rotate(360deg);
+  }
 }
